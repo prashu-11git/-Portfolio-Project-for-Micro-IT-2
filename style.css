@@ -1,0 +1,125 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.game-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.status-message {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #555;
+    min-height: 25px; /* Prevent layout shift */
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 300px; /* Fixed size for the board */
+    height: 300px; /* Fixed size for the board */
+    margin: 0 auto 30px auto;
+    border: 3px solid #6c757d;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures cells stay within rounded border */
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border-radius: 5px;
+    color: #333;
+}
+
+.cell.x {
+    color: #007bff; /* Blue for X */
+}
+
+.cell.o {
+    color: #dc3545; /* Red for O */
+}
+
+.cell:not(.x):not(.o):hover {
+    background-color: #d0d2d5;
+    transform: scale(1.02);
+}
+
+.cell.disabled {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    opacity: 0.8;
+}
+
+.reset-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.reset-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cellAppear {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.cell.animate {
+    animation: cellAppear 0.3s ease-out;
+}
